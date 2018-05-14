@@ -2,12 +2,12 @@
     require_once('includes/db.php');
 
     if (!empty($_POST) && isset($_POST['connection'])) {
-        if (!empty($_POST['email']) && !empty($_POST['motdepasse'])) {
+        if (!empty($_POST['login']) && !empty($_POST['password'])) {
 
-            $request = $connection->prepare('SELECT * FROM utilisateur WHERE email = :email AND mot_de_passe = :mot_de_passe');
-            $request->bindParam(':email', $_POST['email']);
-            $passwordCrypted = sha1($_POST['motdepasse']);
-            $request->bindParam(':mot_de_passe', $passwordCrypted);
+            $request = $connection->prepare('SELECT * FROM user WHERE id_user = :login AND password = :password');
+            $request->bindParam(':login', $_POST['login']);
+            $passwordCrypted = $_POST['password'];
+            $request->bindParam(':password', $passwordCrypted);
 
             try {
                 $request->execute();
@@ -20,7 +20,7 @@
                         'id_utilisateur' => $results['id_utilisateur'],
                     ];
 
-                    header('Location: ./index.php');
+                    header('Location: ./login-connection.php');
                     //echo "<script type='text/javascript'>document.location.replace('index.php?page=mapage');</script>";
                     //exit(); 
                 }
@@ -33,7 +33,6 @@
         } else {
             $emailError = '<span style="color: red; font-size: 12px;">Veuillez remplir votre email.</span>';
             echo '<p>Oups une erreur s\'est produite durant la connexion.</p>';
-            echo '<p>Veuillez remplir tous les champs.</p>';
         }
     }
 ?>
