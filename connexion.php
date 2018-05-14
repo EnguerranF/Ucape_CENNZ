@@ -1,5 +1,5 @@
 <!--Afficher le header de la page-->
-<?php require_once("header.php"); ?>
+<?php require_once("includes/header.php"); ?>
 	<div class="container">
 		<div id="texte3">
 			<h1>Connexion</h1>

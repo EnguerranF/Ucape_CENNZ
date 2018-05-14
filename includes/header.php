@@ -2,8 +2,8 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Ucape</title>
 		<link rel="stylesheet" href="assets/style.css">
+		<title>UCAPE</title>
 		<script src="script.js"></script>
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
