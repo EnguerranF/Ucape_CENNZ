@@ -1,0 +1,31 @@
+/*style pour header*/
+#titre
+{
+	width: 100%;
+	background-color: rgba(30,45,76,0.9);
+	height: 100px;
+}
+
+#titre h1
+{
+	text-transform: uppercase;
+	font-family: "Rockwell",sans-serif;
+	text-align: center;
+	font-size: 45px;
+	color: white;
+	margin: auto;
+	padding-top: 23px;
+}
+
+#titre h4
+{
+	float: right;
+	color: white;
+	padding-right: 10px;
+}
+/*style pour le formulaire*/
+#texte3 h1
+{
+	text-align: center;
+}
+
