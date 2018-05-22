@@ -2,12 +2,12 @@
     require_once('includes/db.php');
 
     if (!empty($_POST) && isset($_POST['connection'])) {
-        if (!empty($_POST['login']) && !empty($_POST['password'])) {
+        if (!empty($_POST['identifiant']) && !empty($_POST['mot_de_passe'])) {
 
-            $request = $connection->prepare('SELECT * FROM user WHERE id_user = :login AND password = :password');
-            $request->bindParam(':login', $_POST['login']);
-            $passwordCrypted = $_POST['password'];
-            $request->bindParam(':password', $passwordCrypted);
+            $request = $connection->prepare('SELECT * FROM user WHERE id_user = :identifiant AND password = :mot_de_passe');
+            $request->bindParam(':identifiant', $_POST['identifiant']);
+            $passwordCrypted = $_POST['mot_de_passe'];
+            $request->bindParam(':mot_de_passe', $passwordCrypted);
 
             try {
                 $request->execute();
@@ -17,12 +17,17 @@
 
                     $_SESSION['utilisateur'] = [
                         'email' => $results['email'],
-                        'id_utilisateur' => $results['id_utilisateur'],
+                        'id_utilisateur' => $results['id_user'],
+                        'admin'=> $results['admin'],
                     ];
 
-                    header('Location: ./login-connection.php');
-                    //echo "<script type='text/javascript'>document.location.replace('index.php?page=mapage');</script>";
-                    //exit(); 
+                    if ($results['admin'] == 1) {
+                        header('Location: ./post_connexion_admin.php');
+                    }
+                    else
+                    {
+                        header('Location: ./post_connexion_eleve.php');
+                    }
                 }
 
                 echo '<p>Désolé vous n\'avez pas été trouvé dans la BDD</p>';
