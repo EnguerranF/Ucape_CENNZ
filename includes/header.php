@@ -14,6 +14,6 @@
 		<div class="container">
 			<div id="titre">
 				<h1>Ucape - Section</h1>
-				<h4>Bonjour Visiteur !</h4>
+				<h4><?php echo $message; echo $bouton; ?></h4>
 			</div>
 		</div>

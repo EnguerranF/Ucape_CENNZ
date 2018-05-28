@@ -1,5 +1,4 @@
 <?php
-    require_once('includes/db.php');
 
     if (!empty($_POST) && isset($_POST['connection'])) {
         if (!empty($_POST['identifiant']) && !empty($_POST['mot_de_passe'])) {

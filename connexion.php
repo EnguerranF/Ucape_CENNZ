@@ -1,5 +1,9 @@
 <!--Afficher le header de la page-->
-<?php require_once("includes/header.php");
+<?php 
+if (!isset($_SESSION['utilisateur'])) {
+    $message = "Bonjour visiteur";
+}
+require_once("includes/header.php");
 require_once("includes/post_login.php"); ?>
 	<div class="container">
 		<div id="texte3">

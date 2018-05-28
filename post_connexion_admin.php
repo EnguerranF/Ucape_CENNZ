@@ -1,4 +1,20 @@
-<?php require_once('includes/header.php'); ?>
+<?php require_once ('includes/session_start.php');
+
+if (isset($_SESSION['utilisateur'])) {
+    if (isset($_SESSION['utilisateur']) and $_SESSION['utilisateur']['admin'] != 0) {
+        $message = "Bonjour ".$_SESSION['utilisateur']['id_utilisateur']." (administrateur)";
+    }
+    else{
+        $message = "Bonjour ".$_SESSION['utilisateur']['id_utilisateur']." (utilisateur)";
+    }
+    $bouton = '<a href="logout.php">  Se déconnecter</a>';
+}
+
+
+require_once('includes/header.php'); 
+
+
+?>
 <section class="container" id="accueil">
     <div class="row">
         <div class="col-md-4" id="tableau">
